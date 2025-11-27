@@ -1,0 +1,18 @@
+<!-- jobs/templates/jobs/employer_dashboard.html -->
+{% extends 'jobs/base.html' %}
+{% block content %}
+<h2>Employer Dashboard</h2>
+<a class="btn btn-success mb-3" href="{% url 'post_job' %}">Post Job</a>
+
+<h4>Your Jobs</h4>
+<ul class="list-group">
+  {% for job in jobs %}
+    <li class="list-group-item">
+      <a href="{% url 'job_detail' job.pk %}">{{ job.title }} — {{ job.company_name }}</a>
+      <span class="float-end">{{ job.created_at }}</span>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No jobs posted yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

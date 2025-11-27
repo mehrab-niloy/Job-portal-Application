@@ -1,0 +1,24 @@
+<!-- jobs/templates/jobs/job_list.html -->
+{% extends 'jobs/base.html' %}
+{% block content %}
+<h2>Jobs</h2>
+
+<form method="get" class="mb-3">
+  <div class="input-group">
+    <input name="q" type="text" value="{{ q }}" class="form-control" placeholder="Search by title, company, location...">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</form>
+
+<ul class="list-group">
+  {% for job in jobs %}
+    <li class="list-group-item">
+      <h5><a href="{% url 'job_detail' job.pk %}">{{ job.title }}</a></h5>
+      <p>{{ job.company_name }} — {{ job.location }}</p>
+      <small>Posted on {{ job.created_at|date:"Y-m-d H:i" }}</small>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No jobs found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- jobs/templates/jobs/applicant_dashboard.html -->
+{% extends 'jobs/base.html' %}
+{% block content %}
+<h2>Applicant Dashboard</h2>
+<h4>Your Applications</h4>
+<ul class="list-group">
+  {% for app in applications %}
+    <li class="list-group-item">
+      <a href="{% url 'job_detail' app.job.pk %}">{{ app.job.title }}</a>
+      <small>Applied at {{ app.applied_at }}</small>
+    </li>
+  {% empty %}
+    <li class="list-group-item">You haven't applied to any jobs.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

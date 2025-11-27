@@ -1,0 +1,8 @@
+<!-- jobs/templates/jobs/home.html -->
+{% extends 'jobs/base.html' %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to JobPortal</h1>
+    <p><a class="btn btn-primary" href="{% url 'job_list' %}">View Jobs</a></p>
+  </div>
+{% endblock %}
